@@ -33,25 +33,25 @@ jobs:
           | docker login --username AWS --password-stdin \
           ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com
 
-      # BUILD IMAGE
+      
       - name: Build Docker image
         run: |
           docker build \
             -t minecraft-server:$IMAGE_TAG .
 
-      # TAG IMAGE
+      
       - name: Tag image for ECR
         run: |
           docker tag minecraft-server:$IMAGE_TAG \
           ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
 
-      # PUSH IMAGE
+      
       - name: Push image to ECR
         run: |
           docker push \
           ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
 
-      # SMOKE TEST
+      
       - name: Smoke test Minecraft server
         run: |
           set -e
@@ -90,13 +90,13 @@ jobs:
             exit 1
           fi
 
-      # UPDATE K8S MANIFEST
+      
       - name: Update Kubernetes image tag
         run: |
           sed -i "s|image: .*|image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG|g" \
           k8s/statefulset.yaml
 
-      # COMMIT NEW TAG
+     
       - name: Commit updated manifest
         run: |
           git config user.name github-actions
