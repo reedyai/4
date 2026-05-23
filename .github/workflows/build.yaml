@@ -94,7 +94,7 @@ jobs:
       - name: Update Kubernetes image tag
         run: |
           sed -i "s|image: .*|image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG|g" \
-          k8s/statefulset.yaml
+          k3s/statefulset.yaml
 
      
       - name: Commit updated manifest
@@ -102,7 +102,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
 
-          git add k8s/statefulset.yaml
+          git add k3s/statefulset.yaml
 
           git diff --cached --quiet || git commit -m "Update Minecraft image to $IMAGE_TAG"
 
