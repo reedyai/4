@@ -23,7 +23,7 @@ spec:
       containers:
         - name: minecraft
 
-          image: 619786279459.dkr.ecr.us-east-1.amazonaws.com/minecraft-server:v1
+          image: 619786279459.dkr.ecr.us-east-1.amazonaws.com/minecraft:latest
 
           ports:
             - containerPort: 25565

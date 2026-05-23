@@ -7,7 +7,7 @@
     aws_region: us-east-1
 
     ecr_registry: 619786279459.dkr.ecr.us-east-1.amazonaws.com
-    minecraft_image: minecraft:v1
+    minecraft_image: minecraft:latest
 
     s3_backup_bucket: s3://minecraft-backups-reedyai/world
 

@@ -9,3 +9,4 @@ data:
   MOTD: "Reedyai"
   MEMORY: "4G"
   JVM_OPTS: "-Xms2G -Xmx4G"
+  VERSION: "1.21.1"
