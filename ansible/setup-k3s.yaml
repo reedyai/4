@@ -81,3 +81,9 @@
       shell: kubectl apply -f /tmp/k3s/
       environment:
         KUBECONFIG: /etc/rancher/k3s/k3s.yaml
+   
+    - name: Set default kubectl namespace to minecraft
+      shell: |
+        kubectl config set-context --current --namespace=minecraft
+      environment:
+        KUBECONFIG: /etc/rancher/k3s/k3s.yaml
