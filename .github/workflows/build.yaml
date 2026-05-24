@@ -6,7 +6,7 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  IMAGE_TAG: tester
+  IMAGE_TAG: latest
 
 jobs:
   build:
